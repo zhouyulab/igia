@@ -1,0 +1,15 @@
+##gff-version 2
+##source-version GeneMark.hmm_PROKARYOTIC 3.20
+##date: Wed Jul 12 18:52:54 2017
+# Sequence file name: isoFAR.fa
+# Model file name: GeneMark_hmm.mod
+# RBS: true
+# Model information: GeneMarkS_default_gcode_1
+
+n_2_c_1_g_1_isoA_1	GeneMark.hmm	CDS	1224	1577	-460.544803	+	0	gene_id=1, length=354, gene_score=-460.544803, rbs_score=-0.861824, rbs_spacer=-1, stop_enforced=N, start_codon=0, logodd=10.686169
+
+n_3_c_1_g_1_isoF_1	GeneMark.hmm	CDS	638	1432	-1038.228604	+	0	gene_id=2, length=795, gene_score=-1038.228604, rbs_score=-1.739297, rbs_spacer=-1, stop_enforced=N, start_codon=0, logodd=46.805091
+
+n_5_c_1_g_1_isoF_1	GeneMark.hmm	CDS	294	698	-524.168214	+	0	gene_id=3, length=405, gene_score=-524.168214, rbs_score=0.621649, rbs_spacer=-1, stop_enforced=N, start_codon=0, logodd=33.924674
+
+n_6_c_1_g_1_isoF_1	GeneMark.hmm	CDS	262	2046	-2330.379889	+	0	gene_id=4, length=1785, gene_score=-2330.379889, rbs_score=0.325464, rbs_spacer=-1, stop_enforced=N, start_codon=0, logodd=128.468967

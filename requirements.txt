@@ -1,0 +1,10 @@
+# Add your requirements here like:
+pysam>=0.10
+numpy>=1.12.0
+scipy>=0.18.1
+networkx>=1.11
+deepTools>=2.5.1
+bx-python>=0.7.3
+pybedtools>=0.7.10
+pyBigWig>=0.3.4
+mpi4py>=2.0.0
