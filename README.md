@@ -30,11 +30,11 @@ The IGIA package can run on a standard computer or server cluster. For single-pr
 
 ### OS requirements
 
-The package has been tested on the following *Linux* operating systems.
+The package has been tested on the following *Linux* and *MacOS* operating systems.
 
 - Linux: Ubuntu 16.04
 - Linux: Red Hat 4.8.3
-- MacOS: 
+- MacOS: MacBook Pro with MacOS High Sierra
 
 # Installation guide
 
