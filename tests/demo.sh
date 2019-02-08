@@ -8,4 +8,5 @@ igia  -g data/genome.fa --size data/chrom.size \
     --ngs data/Anther.sort.bam data/Bract.sort.bam data/Cotyledon.sort.bam \
     -r "1+-,1-+,2++,2--" \
     -v \
-    -o igia_res
+    -o igia_demo
+

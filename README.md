@@ -7,7 +7,7 @@
 - [System requirements](#system-requirements)
 - [Installation guide](#installation-guide)
 - [Demo](#demo)
-- [Instructions for use](#instuctions-for-use)
+- [Instructions for use](#instructions-for-use)
 - [License](./LICENSE.txt)
 - [Issues](https://github.com/zhouyulab/igia/issues)
 
@@ -96,7 +96,7 @@ If you have successfully installed IGIA, you can use the following command to ru
   bash ./demo.sh
   ```
 
-The expected run time for demo on a "normal" desktop computer is about 4 minutes, and the results from IGIA will be generated in `/path/to/igia/tests/igia_res`.
+The expected run time for demo on a "normal" desktop computer is about 4 minutes, and the results from IGIA will be generated in `/path/to/igia/tests/igia_demo`.
 
 The expected output include several `iso*.bed12` files, a set of assembled transcripts in BED12 format, and 4 `*.bed6` files for different genomic elements identified.
 
@@ -111,7 +111,7 @@ To run IGIA with single-threaded mode, you can execute:
   igia --tgs tgs1.bam --tss tss.csv --tes tes.csv --ngs ngs1.bam ngs2.bam -o igia_res
   ```
 
-  See `/path/to/igia/tests/example.sh` for usage.
+See `/path/to/igia/tests/example.sh` for example usage on a full list of data sets in this study. Each BAM file is a small subset of reads.
 
 To run IGIA with MPI mode in a cluster, you must first ensure that Openmpi/Mpich is installed and already configured in the cluster. Then you can execute:
 

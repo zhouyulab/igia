@@ -14,3 +14,4 @@ igia  -g data/genome.fa --size data/chrom.size \
     -r "1+-,1-+,2++,2--" \
     -v \
     -o igia_res
+
