@@ -356,7 +356,10 @@ def load_txs(file):
 
 def make_read(ref_id, name, start, cigar):
     """ Build sam format read by position """
-    tgs_read = pysam.AlignedSegment()
+    header = pysam.AlignmentHeader()
+    header_dict = { 'HD': {'VN': '1.0'}, 'SQ': [{'LN': 1e6, 'SN': 'chr1'}, {'LN': 1e6, 'SN': 'chr2'}] }
+    header = header.from_dict(header_dict)
+    tgs_read = pysam.AlignedSegment(header)
     tgs_read.query_name = name
     tgs_read.reference_id = ref_id
     tgs_read.reference_start = start
