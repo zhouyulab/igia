@@ -248,7 +248,7 @@ class TestJunctionGraph(unittest.TestCase):
                           (0, 20), (2, 10), (0, 5), (3, 20), (0, 20)])
         junctions = JunctionGraph._find_junction(read, 10)
         self.assertEqual(len(junctions), 1)
-        self.assertEqual(junctions[0], ((None, 120, '+', 'EI'), (None, 140, '+', 'IE')))
+        self.assertEqual(junctions[0], (("chr1", 120, '+', 'EI'), ("chr1", 140, '+', 'IE')))
 
 
 class TestIntron(unittest.TestCase):
