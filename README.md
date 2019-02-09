@@ -87,6 +87,14 @@ You can use following way to install the dependencies first, then install IGIA p
   python setup.py install
   ```
 
+To test the package code, you can run unit tests in `tests/test_*.py` as below. 
+
+  ```bash
+  python setup.py test
+  ```
+
+Currently there are 115 tests. If any test fails, please create an [issue](https://github.com/zhouyulab/igia/issues) or contact us by email.
+
 # Demo
 
 If you have successfully installed IGIA, you can use the following command to run IGIA on test data.
@@ -98,9 +106,9 @@ If you have successfully installed IGIA, you can use the following command to ru
 
 The expected run time for demo on a "normal" desktop computer is about 4 minutes, and the results from IGIA will be generated in `/path/to/igia/tests/igia_demo`.
 
-The expected output include several `iso*.bed12` files, a set of assembled transcripts in BED12 format, and 4 `*.bed6` files for different genomic elements identified.
+The expected output, as in `tests/igia_demo_expected`, include several `iso*.bed12` files, a set of assembled transcripts in BED12 format, and 4 `*.bed6` files for different genomic elements identified.
 
-For IGIA assembled transcripts, isoF and isoA are the most reliable annotations. For details, please refer IGIA manuscript.
+For IGIA assembled transcripts, isoF class transcripts are the most reliable isoforms. For details, please refer IGIA manuscript.
 
 # Instructions for use
 
@@ -111,7 +119,7 @@ To run IGIA with single-threaded mode, you can execute:
   igia --tgs tgs1.bam --tss tss.csv --tes tes.csv --ngs ngs1.bam ngs2.bam -o igia_res
   ```
 
-See `/path/to/igia/tests/example.sh` for example usage on a full list of data sets in this study. Each BAM file is a small subset of reads.
+See `/path/to/igia/tests/example.sh` for example usage on a full list of data sets in this study. Each BAM file is a small subset of reads. The expected output files are in `tests/igia_res_expected`.
 
 To run IGIA with MPI mode in a cluster, you must first ensure that Openmpi/Mpich is installed and already configured in the cluster. Then you can execute:
 
