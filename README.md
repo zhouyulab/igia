@@ -102,6 +102,8 @@ The expected output include several `iso*.bed12` files, a set of assembled trans
 
 For IGIA assembled transcripts, isoF and isoA are the most reliable annotations. For details, please refer IGIA manuscript.
 
+Note: TSS and TES will use the annotated sites and the sites predicted by TGS data. See the `*.bed6` file for the data set used for transcript reconstruction.
+
 # Instructions for use
 
 To run IGIA with single-threaded mode, you can execute:
