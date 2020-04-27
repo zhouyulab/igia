@@ -404,6 +404,13 @@ class Gene(object):
             else:
                 tgs_upsmost_site = np.max([x.reference_end for x in self.tgs_read_list])
 
+        # If not TSS site, try to use annotation tss.
+        if not tss_site_list:
+            if self.ival.strand == "+":
+                tss_site_list = list({x.reference_start for x in self.ann_read_list})
+            else:
+                tss_site_list = list({x.reference_end for x in self.ann_read_list})
+
         # If TGS end is farther than known TSS site, add it.
         if tgs_upsmost_site > 0:
             if tss_site_list:
@@ -417,11 +424,6 @@ class Gene(object):
             else:
                 tss_site_list.append(tgs_upsmost_site)
 
-        if not tss_site_list:
-            if self.ival.strand == "+":
-                tss_site_list = list({x.reference_start for x in self.ann_read_list})
-            else:
-                tss_site_list = list({x.reference_end for x in self.ann_read_list})
         self.tss_site_list = tss_site_list
 
     def identify_tes_site(self, ext_tes_site_list):
@@ -439,6 +441,15 @@ class Gene(object):
                 tgs_downsmost_site = np.min(
                     [x.reference_start for x in self.tgs_read_list])
 
+        # If not TES site, try to use annotation tes.
+        if not tes_site_list:
+            if self.ival.strand == "+":
+                tes_site_list = list(
+                    {x.reference_end for x in self.ann_read_list})
+            else:
+                tes_site_list = list(
+                    {x.reference_start for x in self.ann_read_list})
+
         # If TGS end is farther than known TES site, add it.
         if tgs_downsmost_site > 0:
             if tes_site_list:
@@ -450,15 +461,6 @@ class Gene(object):
                     tes_site_list.append(tgs_downsmost_site)
             else:
                 tes_site_list.append(tgs_downsmost_site)
-
-        # If not TES site, try to use annotation tes.
-        if not tes_site_list:
-            if self.ival.strand == "+":
-                tes_site_list = list(
-                    {x.reference_end for x in self.ann_read_list})
-            else:
-                tes_site_list = list(
-                    {x.reference_start for x in self.ann_read_list})
         self.tes_site_list = tes_site_list
 
     def identify_tss_exon(self):
@@ -485,10 +487,15 @@ class Gene(object):
 
     def identify_element(self, ext_tss_site_list, ext_tes_site_list, paraclu_path=None):
         """ Identify transcript elements by TGS and NGS data. """
-        if (not ext_tss_site_list) and (paraclu_path is not None):
-            ext_tss_site_list = ElementDiscover.find_txs_by_tgs(self.tgs_read_list, "tss", paraclu_path)
-        if (not ext_tes_site_list) and (paraclu_path is not None):
-            ext_tes_site_list = ElementDiscover.find_txs_by_tgs(self.tgs_read_list, "tes", paraclu_path)
+        if paraclu_path is not None:
+            infer_ext_tss_site_list = ElementDiscover.find_txs_by_tgs(self.tgs_read_list, "tss", paraclu_path)
+            if ext_tss_site_list:
+                infer_ext_tss_site_list = [x for x in infer_ext_tss_site_list if not any([abs(x - tmp_txs) < GVAR.TXS_DIFF for tmp_txs in ext_tss_site_list])]
+            infer_ext_tes_site_list = ElementDiscover.find_txs_by_tgs(self.tgs_read_list, "tes", paraclu_path)
+            if ext_tes_site_list:
+                infer_ext_tes_site_list = [x for x in infer_ext_tes_site_list if not any([abs(x - tmp_txs) < GVAR.TXS_DIFF for tmp_txs in ext_tes_site_list])]
+            ext_tss_site_list = sorted(ext_tss_site_list + infer_ext_tss_site_list)
+            ext_tes_site_list = sorted(ext_tes_site_list + infer_ext_tes_site_list)
         self.identify_intron()
         self.identify_internal_exon()
         self.identify_tss_site(ext_tss_site_list)

@@ -110,6 +110,8 @@ The expected output, as in `tests/igia_demo_expected`, include several `iso*.bed
 
 For IGIA assembled transcripts, isoF class transcripts are the most reliable isoforms. For details, please refer IGIA manuscript.
 
+Note: TSS and TES will use the annotated sites and the sites predicted by TGS data. See the `*.bed6` file for the data set used for transcript reconstruction.
+
 # Instructions for use
 
 To run IGIA with single-threaded mode, you can execute:

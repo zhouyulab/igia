@@ -62,7 +62,7 @@ def igia_parser():
     opt_group.add_argument("--time-out", type=int, dest="time_out", metavar="time_out", default=None,
                            help="Time out for complex loci")
     opt_group.add_argument("--paraclu-path", type=str, dest="paraclu_path", metavar="paraclu_path", default=None,
-                           help="Path to paraclu (for detecting TSS and TES from TGS data)")
+                           help="(recommend) Path to paraclu (for detecting TSS and TES from TGS data). If this parameter is set, TGS data will be also used to identify TXS to increase the coverage of gene annotations.")
     return parser
 
 def parse_args(args):
